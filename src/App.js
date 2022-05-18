@@ -1,23 +1,31 @@
-import logo from './logo.svg';
+import { useState } from 'react'; 
+import { useDispatch, useSelector } from 'react-redux';
+import { addQuestion } from './store/actions';
+import { v4 as uuid } from 'uuid';
 import './App.css';
 
 function App() {
+  const dispatch = useDispatch();
+  const [question, setQuestion] = useState('')
+  const questions = useSelector(store => store.questions);
+  const loading = useSelector(store => store.questionLoading);
+
+  const handleQuestionChange = (e) => {
+    setQuestion(e.target.value);
+  }
+
+  const handleAddQuestion = () => {
+    dispatch(addQuestion(question));
+    setQuestion('')
+  }
+
+  console.log('loading', loading)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <input type='text' value={question} onChange={handleQuestionChange} />
+      <button onClick={handleAddQuestion}>Add Question</button>
+      {questions.map(q => (<div key={q}>{q}</div>))}
     </div>
   );
 }
