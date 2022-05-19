@@ -3,6 +3,8 @@ import * as actions from './actionTypes';
 const initialState = {
   questions: [],
   questionLoading: false,
+  productsFetching: false,
+  products: [],
 }
 
 export default function reducer(state = initialState, action) {
@@ -17,6 +19,20 @@ export default function reducer(state = initialState, action) {
         ...state,
         questions: state.questions.filter(q => action.payload.id !== q.id)
       };
+
+    case actions.FETCH_PRODUCTS:
+      return {
+        ...state,
+        productsFetching: true
+      };
+
+    case actions.RECEIVE_PRODUCTS:
+      return {
+        ...state,
+        products: action.payload,
+        productsFetching: false
+      };
+
     default:
       return state;
   }

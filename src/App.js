@@ -1,31 +1,12 @@
-import { useState } from 'react'; 
-import { useDispatch, useSelector } from 'react-redux';
-import { addQuestion } from './store/actions';
-import { v4 as uuid } from 'uuid';
 import './App.css';
+import Products from './components/Products/Products';
 
 function App() {
-  const dispatch = useDispatch();
-  const [question, setQuestion] = useState('')
-  const questions = useSelector(store => store.questions);
-  const loading = useSelector(store => store.questionLoading);
 
-  const handleQuestionChange = (e) => {
-    setQuestion(e.target.value);
-  }
-
-  const handleAddQuestion = () => {
-    dispatch(addQuestion(question));
-    setQuestion('')
-  }
-
-  console.log('loading', loading)
 
   return (
     <div className="App">
-      <input type='text' value={question} onChange={handleQuestionChange} />
-      <button onClick={handleAddQuestion}>Add Question</button>
-      {questions.map(q => (<div key={q}>{q}</div>))}
+      <Products />
     </div>
   );
 }
