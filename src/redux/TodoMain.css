@@ -1,0 +1,40 @@
+.todoMain{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4%;
+}
+
+.pageContainer{
+    width: 50%;
+    height: 600px;
+    background: linear-gradient(
+        90deg,
+        rgba(35, 2, 168, 0.397) 10%,
+        rgba(2, 119, 165, 0.473) 100%
+      );
+    border-radius: 4px;
+   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+    /* justify-content: center; */
+}
+
+.input{
+    width: 300px;
+    height: 30px;
+    border-radius: 6px;
+}
+
+.btnInput{
+    width: 50px;
+    height: 35px;
+    border-radius: 6px;
+}
+
+button{
+    border-radius: 4px;
+}

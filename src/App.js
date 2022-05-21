@@ -1,12 +1,11 @@
-import './App.css';
-import Products from './components/Products/Products';
+import React from 'react';
+import TodoMain from './redux/TodoMain';
 
 function App() {
 
-
   return (
     <div className="App">
-      <Products />
+      <TodoMain />
     </div>
   );
 }
